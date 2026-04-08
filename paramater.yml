@@ -1,0 +1,4 @@
+# parameter.yml
+# Required by fabric-cicd for workspace deployment
+workspace_id: ""  # kan leeg / placeholder
+environment: "main"
