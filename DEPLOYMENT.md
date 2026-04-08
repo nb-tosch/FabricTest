@@ -15,7 +15,7 @@ Files in this setup
 - requirements.txt: Python dependencies.
 
 One-time setup
-1. Update workspace ID in config.yml for default.
+1. Update workspace ID in config.yml for default and/or main.
 2. Keep or adjust item_types_in_scope in config.yml.
 3. Review replacements in parameter.yml and match them to real values for the target environment.
 4. Install dependencies:
@@ -24,12 +24,12 @@ One-time setup
 Authentication options
 - Azure CLI:
   - az login
-  - python deploy_fabric.py --environment default --auth azcli
+  - python deploy_fabric.py --environment main --auth azcli
 - Azure PowerShell:
   - Connect-AzAccount
-  - python deploy_fabric.py --environment default --auth azps
+  - python deploy_fabric.py --environment main --auth azps
 - Service Principal:
-  - python deploy_fabric.py --environment default --auth spn --tenant-id <tenant> --client-id <client> --client-secret <secret>
+  - python deploy_fabric.py --environment main --auth spn --tenant-id <tenant> --client-id <client> --client-secret <secret>
 
 Recommended first rollout flow
 1. Deploy to default first.
@@ -43,5 +43,7 @@ Fabric notebook option
 
 Troubleshooting hints
 - Environment key must exist in config.yml and parameter.yml.
+- Parameterization in this repo uses _ALL_ for replacements, so values are applied to any environment key (including main/default).
 - Config path is resolved absolutely by deploy_fabric.py.
 - If publish fails with unsupported structure, export items from Fabric Source Control and replace local custom structure with item-name.item-type folders.
+- If logs show "Published" but target workspace is empty, your repo likely has zero deployable item folders or empty item folders. Ensure non-empty folders like Name.Notebook or Name.DataPipeline are committed.

@@ -43,7 +43,7 @@ def main() -> None:
     parser.add_argument(
         "--environment",
         required=True,
-        choices=["default", "dev", "test", "prod"],
+        choices=["main", "default", "dev", "test", "prod"],
         help="Environment key to select in config.yml",
     )
     parser.add_argument(
