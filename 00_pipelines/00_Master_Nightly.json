@@ -1,0 +1,25 @@
+{
+  "name": "00_Master_Nightly",
+  "type": "DataPipeline",
+  "description": "Master nightly pipeline met Bronze → Silver → Gold flow",
+  "tasks": [
+    {
+      "name": "01_Bronze",
+      "type": "NotebookTask",
+      "notebook": "/01_Bronze/B_Datalakehouse/notebooks/B_SourceData",
+      "depends_on": []
+    },
+    {
+      "name": "02_Silver",
+      "type": "WarehouseTask",
+      "warehouse": "S_Datawarehouse",
+      "schema": "sp",
+      "depends_on": ["01_Bronze"]
+    },
+    {
+      "name": "03_Gold",
+      "type": "CustomTask",
+      "depends_on": ["02_Silver"]
+    }
+  ]
+}

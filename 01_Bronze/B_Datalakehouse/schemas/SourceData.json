@@ -1,0 +1,13 @@
+{
+  "name": "SourceData",
+  "tables": [
+    {
+      "name": "SampleTable",
+      "columns": [
+        {"name": "id", "type": "INTEGER"},
+        {"name": "name", "type": "STRING"},
+        {"name": "ingest_timestamp", "type": "TIMESTAMP"}
+      ]
+    }
+  ]
+}
