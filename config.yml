@@ -1,0 +1,27 @@
+core:
+  # For initial customer deployment, keep a single environment key.
+  workspace_id:
+    default: "00000000-0000-0000-0000-000000000000"
+
+  # Deploy from repository root
+  repository_directory: "."
+
+  # Keep scope explicit for first rollout
+  item_types_in_scope:
+    - Notebook
+    - DataPipeline
+    - Lakehouse
+    - Warehouse
+
+  # Explicitly enable parameterization
+  parameter: "parameter.yml"
+
+publish:
+  # Run publish during initial deployment
+  skip:
+    default: false
+
+unpublish:
+  # For initial project bootstrap, do NOT remove orphans automatically
+  skip:
+    default: true

@@ -1,2 +1,18 @@
-# alleen environment, geen workspace_id
-environment: default
+find_replace:
+  # Replace hardcoded Lakehouse name in notebook code.
+  - find_value: "B_Datalakehouse"
+    replace_value:
+      default: "B_Datalakehouse"
+    file_path: "01_Bronze/B_Datalakehouse/notebooks/B_SourceData.ipynb"
+
+  # Optional project label replacement for custom JSON assets.
+  - find_value: "PROJECT_TEMPLATE"
+    replace_value:
+      default: "PROJECT_DEFAULT"
+
+key_value_replace:
+  # Keep custom pipeline file deploy-safe with environment-specific naming.
+  - find_key: $.name
+    replace_value:
+      default: "00_Master_Nightly"
+    file_path: "00_pipelines/00_Master_Nightly.json"
